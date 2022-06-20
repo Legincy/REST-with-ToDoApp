@@ -15,33 +15,33 @@ final class Todo: Model, Content {
     var id: UUID?
 
     @Field(key: "title")
-    var title: String
+    var title: String?
     
     @Field(key: "description")
-    var description: String
+    var description: String?
     
-    @Field(key: "creation_date")
-    var creationDate: Date
+    @Timestamp(key: "created_at", on: .create)
+    var creationDate: Date?
     
-    @Field(key: "modification_date")
-    var modificationDate: Date
+    @Timestamp(key: "modified_at", on: .update)
+    var modificationDate: Date?
     
-    @Field(key: "completion_date")
-    var completionDate: Date
+    @Field(key: "completed_at")
+    var completionDate: Date?
     
     @Field(key: "deleted")
-    var deleted: Bool
+    var deleted: Bool?
     
     @Field(key: "completed")
-    var completed: Bool
+    var completed: Bool?
 
     init() {}
 
-    init(id: UUID? = nil, title: String, description: String, completed: Bool = false, deleted: Bool = false){
+    init(id: UUID? = nil, title: String, description: String, deleted: Bool, completed: Bool){
         self.id = id
         self.title = title
         self.description = description
-        self.completed = completed
         self.deleted = deleted
+        self.completed = completed
     }
 }

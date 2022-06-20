@@ -13,11 +13,12 @@ struct CreateTodo: Migration {
             .id()
             .field("title", .string, .required)
             .field("description", .string)
-            .field("creation_date", .datetime)
-            .field("completion_date", .datetime)
-            .field("modification_date", .datetime, .required)
-            .field("deleted", .bool, .sql(.default(false)))
-            .field("completed", .bool, .sql(.default(false)))
+            .field("created_at", .datetime)
+            .field("completed_at", .datetime)
+            .field("modified_at", .datetime)
+            //.sql(.default("Your default value"))
+            .field("deleted", .bool)
+            .field("completed", .bool)
             .create()
     }
 
